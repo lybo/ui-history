@@ -31,6 +31,12 @@ class Article extends Component {
         });
     }
 
+    handleCancel(item) {
+        this.setState({
+            editMode: false,
+        });
+    }
+
     render() {
         const { item } = this.props;
         const { editMode } = this.state;
@@ -47,6 +53,7 @@ class Article extends Component {
                     <ArticleForm
                         item={item}
                         handleSubmit={this.handleSubmit.bind(this)}
+                        handleCancel={this.handleCancel.bind(this)}
                     />
                 ) : (
                     <div>

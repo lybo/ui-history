@@ -15,6 +15,14 @@ class ArticleForm extends Component {
         }));
     }
 
+    handleCancel(event) {
+        event.preventDefault();
+
+        const { handleCancel } = this.props;
+
+        handleCancel && handleCancel();
+    }
+
     render() {
         const { item } = this.props;
 
@@ -39,11 +47,14 @@ class ArticleForm extends Component {
                 <div>
                     <label>Content</label>
                     <textarea
+                        cols="100"
+                        rows="100"
                         defaultValue={item.article}
                         ref={(article) => this.article = article}>
                     </textarea>
                 </div>
                 <button>Save</button>
+                <a href="/cancel" onClick={this.handleCancel.bind(this)}>Cancel</a>
             </form>
         );
     }
